@@ -1,0 +1,24 @@
+services:
+  # Backend API
+  - type: web
+    name: can-notice-backend
+    env: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false  # Set manually in Render dashboard
+
+  # Frontend Static Site
+  - type: static
+    name: can-notice-frontend
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: can-notice-backend
+          property: host
