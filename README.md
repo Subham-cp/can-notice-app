@@ -280,4 +280,4 @@ with pdfplumber.open('backend/template.pdf') as pdf:
 
 ## 📄 License
 
-Internal use — Computer Association of NERIST (CAN), NERIST CSE Department.
+Internal use — INFO AND PUB SECRETARY, Computer Association of NERIST (CAN), 2026-27.
